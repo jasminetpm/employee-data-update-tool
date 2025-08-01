@@ -7,6 +7,7 @@ public class Main {
 //        Stack<Command> history = new Stack();
 //
 
+        System.out.println("Test to see merge conflict");
         // loop to take payload
 //        AddCommand addCommand = new AddCommand();
 //        UpdateCommand updateCommand = new UpdateCommand();
