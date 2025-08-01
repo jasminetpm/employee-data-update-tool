@@ -8,6 +8,7 @@ public class Main {
 //
         System.out.println("Merge conflict");
 
+        System.out.println("Test to see merge conflict");
         // loop to take payload
 //        AddCommand addCommand = new AddCommand();
 //        UpdateCommand updateCommand = new UpdateCommand();
