@@ -21,6 +21,7 @@ public class Invoker {
         for (Command cmd : cmdToExecute) {
             if (cmd != null) {
                 cmd.execute();
+                //TODO: check execute's boolean return to decide if we should .push
                 history.push(cmd);  // Only add to history if undoable
             }
         }
@@ -29,7 +30,7 @@ public class Invoker {
     }
 
     /**
-     *  storeToFile() takes in filename and history stack, and overwrites the
+     *  storeToFile() takes in history stack and overwrites the
      *  dataStore.txt after every successful executeCommand
      * @param history Command Stack history of successfully executed commands
      */
