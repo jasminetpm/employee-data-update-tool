@@ -14,6 +14,8 @@ public class Client {
 
         Employee employee1 = new Employee("John",  "Doe", "simple@example.com");
         Command command1 = new AddCommand(receiver, employee1);
+        // example add with String data as payload
+//        Command addCommand = new AddCommand(receiver, "data1 data2 data3");
         Employee employee2 = new Employee("Hanna", "Moon", "tetter.tots@potatoesarelife.com");
         Command command2 = new AddCommand(receiver, employee2);
         Command command3 = new DeleteCommand(receiver,2);
