@@ -14,4 +14,9 @@ public class DeleteCommand implements Command {
     public void execute() {
 
     }
+
+    @Override
+    public void undo() {
+
+    }
 }

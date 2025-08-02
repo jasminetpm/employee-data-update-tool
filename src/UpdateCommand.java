@@ -14,4 +14,9 @@ public class UpdateCommand implements Command {
     public void execute() {
 
     }
+
+    @Override
+    public void undo() {
+
+    }
 }

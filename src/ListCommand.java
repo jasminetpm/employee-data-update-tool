@@ -14,4 +14,9 @@ public class ListCommand implements Command {
     public void execute() {
 
     }
+
+    @Override
+    public void undo() {
+
+    }
 }

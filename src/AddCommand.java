@@ -1,17 +1,22 @@
 public class AddCommand implements Command {
     //params
-    private String params;
+    private Employee employee;
 
     //receiver
     private Receiver receiver;
 
-    public AddCommand(Receiver receiver, String params) {
+    public AddCommand(Receiver receiver, Employee employee) {
         this.receiver = receiver;
-        this.params = params;
+        this.employee = employee;
     }
 
     @Override
     public void execute() {
+        receiver.add(employee);
+    }
 
+    @Override
+    public void undo() {
+        receiver.getEmployees().remove(employee);
     }
 }
