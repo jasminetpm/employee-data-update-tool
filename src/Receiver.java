@@ -37,13 +37,9 @@ public class Receiver {
     }
 
     public void list() {
-        if (employees.isEmpty()) {
-            System.out.println("No employees.");
-        } else {
-            for (int i = 0; i < employees.size(); i++) {
-                //format the list number, ensuring it has at least two digits, and pad with leading zeros if it has fewer than two digits"
-                System.out.println(String.format("%02d. %s", i + 1, employees.get(i))); //retrieve element at specific index within employees ArrayList
-            }
+        for (int i = 0; i < employees.size(); i++) {
+            //format the list number, ensuring it has at least two digits, and pad with leading zeros if it has fewer than two digits"
+            System.out.println(String.format("%02d. %s", i + 1, employees.get(i))); //retrieve element at specific index within employees ArrayList
         }
     }
 

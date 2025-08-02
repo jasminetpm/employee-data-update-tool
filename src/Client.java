@@ -4,31 +4,23 @@ import java.util.Stack;
 public class Client {
     public static void main(String[] args) {
 
-        Receiver dataStore = new Receiver();
+        // Test
+
+        // Create Receiver
+        Receiver receiver = new Receiver();
+
+        // Create Invoker
+        Invoker invoker = new Invoker();
+
+        Employee employee1 = new Employee("John",  "Doe", "simple@example.com");
+        Command command1 = new AddCommand(receiver, employee1);
+        Command command2 = new ListCommand(receiver);
+
+        Command[] cmdToExecute = new Command[] {command1, command2};
+
+        invoker.setCommandsForExecution(cmdToExecute);
         Stack<Command> history = new Stack<>();
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.print("> ");
-            String input = scanner.nextLine().trim().toLowerCase();
-            if (input.equals("exit")) break;
-
-            Command cmd = null;
-
-            // Parse input & construct Command object
-            if (input.startsWith("add")) {
-                // parse name/email
-                Employee e = new Employee("John", "Doe", "test@example.com"); // example
-                cmd = new AddCommand(dataStore, e);
-            }
-
-            // Wrap and execute
-            Invoker invoker = new Invoker();
-            invoker.setCommandsForExecution(new Command[]{cmd}); //Create an array with 1 element, {cmd}
-            invoker.executeCommand(history);
-        }
-
-        scanner.close();
+        invoker.executeCommand(history);
 
         // Create empty Stack<Command> history to store history
 //        Stack<Command> history = new Stack();

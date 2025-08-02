@@ -1,18 +1,21 @@
 public class ListCommand implements Command {
-    //params
-    private String params;
+    // No params because no inputs required
 
     //receiver
     private Receiver receiver;
 
-    public ListCommand(Receiver receiver, String params) {
+    public ListCommand(Receiver receiver) {
         this.receiver = receiver;
-        this.params = params;
     }
 
     @Override
     public void execute() {
-
+        if (receiver.getEmployees().isEmpty()) {
+            System.out.println("No employees.");
+        }
+        else {
+            receiver.list();
+        }
     }
 
     @Override
