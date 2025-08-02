@@ -1,18 +1,23 @@
-public class UndoCommand implements Command {
-    //params
-    private String params;
+import java.util.Stack;
 
-    //receiver
-    private Receiver receiver;
+public class UndoCommand implements Command {
+    //no params because no inputs required
+
+    //history
+    private Stack<Command> history;
 
     public UndoCommand(Receiver receiver, String params) {
-        this.receiver = receiver;
-        this.params = params;
+        this.history = history;
     }
 
     @Override
     public void execute() {
-
+        if (!history.isEmpty()) {
+            Command last = history.pop();
+            last.undo();
+        } else {
+            System.out.println("Nothing to undo.");
+        }
     }
 
     @Override
