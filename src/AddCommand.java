@@ -17,6 +17,6 @@ public class AddCommand implements Command {
 
     @Override
     public void undo() {
-        receiver.getEmployees().remove(employee);
+        receiver.getEmployees().remove(employee); //remove the Employee object using the List .remove method
     }
 }
