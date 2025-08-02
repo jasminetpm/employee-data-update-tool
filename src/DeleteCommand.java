@@ -8,7 +8,7 @@ public class DeleteCommand implements Command {
 
     public DeleteCommand(Receiver receiver, int index) {
         this.receiver = receiver;
-        this.index = index;
+        this.index = index-1; //index is based off -1 of the index shown using the List command
     }
 
     /**

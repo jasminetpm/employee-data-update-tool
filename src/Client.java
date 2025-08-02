@@ -14,9 +14,12 @@ public class Client {
 
         Employee employee1 = new Employee("John",  "Doe", "simple@example.com");
         Command command1 = new AddCommand(receiver, employee1);
-        Command command2 = new ListCommand(receiver);
+        Employee employee2 = new Employee("Hanna", "Moon", "tetter.tots@potatoesarelife.com");
+        Command command2 = new AddCommand(receiver, employee2);
+        Command command3 = new DeleteCommand(receiver,2);
+        Command command4 = new ListCommand(receiver);
 
-        Command[] cmdToExecute = new Command[] {command1, command2};
+        Command[] cmdToExecute = new Command[] {command1, command2, command3, command4};
 
         invoker.setCommandsForExecution(cmdToExecute);
         Stack<Command> history = new Stack<>();
