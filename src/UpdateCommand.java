@@ -12,7 +12,7 @@ public class UpdateCommand implements Command {
 
     @Override
     public void execute() {
-
+        receiver.update(params);
     }
 
     @Override
