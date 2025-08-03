@@ -1,7 +1,7 @@
 public class AddCommand implements Command {
     //params
     private Employee employee;
-    private String payload;
+    private String params;
 
     //receiver
     private Receiver receiver;
@@ -9,17 +9,17 @@ public class AddCommand implements Command {
     // constructor for receiver with String payload params
     public AddCommand(Receiver receiver, String payload) {
         this.receiver = receiver;
-        this.payload = payload;
+        this.params = params;
     }
 
     public AddCommand(Receiver receiver, Employee employee) {
         this.receiver = receiver;
         this.employee = employee;
     }
-    // execute method for String payload
+    // execute method for String params
 //    @Override
 //    public void execute() {
-//        receiver.add(payload);
+//        receiver.add(params);
 //    }
 
 
