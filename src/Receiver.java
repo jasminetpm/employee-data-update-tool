@@ -19,21 +19,21 @@ public class Receiver {
      *  3. calls isValidEmail to verify <data3> with regex
      *  4. if no failure, initialize Employee object and add it arrayList
      *
-     * @param payload String input in form "<data1> <data2> <data3>"
+     * @param params String input in form "<data1> <data2> <data3>"
      * @return boolean true if success, false if any failure encountered
      */
-    public boolean add(String payload) {
-        // splits payload
-        String[] parts = payload.split(" ");
+    public boolean add(String params) {
+        // splits params
+        String[] parts = params.split(" ");
         if (parts.length != 3) {
             System.out.println("Invalid payload format. Expected: <data1> <data2> <data3>");
             return false;
         }
-        // updates payload to desired TitleCase format
+        // updates params to desired TitleCase format
         String firstName = toTitleCase(parts[0]);
         String lastName = toTitleCase(parts[1]);
         String email = parts[2];
-        // calls isValidEmail method to verify payload email format
+        // calls isValidEmail method to verify params email format
         if (!isValidEmail(email)) {
             System.out.println("Invalid email format.");
             return false;
@@ -95,9 +95,67 @@ public class Receiver {
         employees.add(deletedEmployee);
     }
 
-    public void update(int index, Employee employee) {
-        employees.set(index, employee);
+//    public void update(int index, Employee employee) {
+//        employees.set(index, employee);
+//    }
+
+    /**
+     *  update method taking index and updates according to params
+     *  checks index for employee and retrieves if it exists
+     *  verifies params format for index and data
+     *  retrieves employee object from list and updates it
+     *  ensuring titlecase and email format
+     *
+     * @param params payload String in form of <index> <data>...
+     * @return boolean true/false based on operation pass/fail
+     */
+    public boolean update(String params) {
+    String[] parts = params.split(" ");
+    if (parts.length < 2 || parts.length > 4) {
+        System.out.println("Invalid payload format. Expected: <index> <data1> <data2> <data3>");
+        return false;
     }
+
+    int index;
+    // get the value of index from our String params
+    try {
+        index = Integer.parseInt(parts[0]) - 1; // Convert to 0-based index
+    } catch (NumberFormatException e) {
+        System.out.println("Invalid index format.");
+        return false;
+    }
+
+    // check index exists within our employees list
+    if (index < 0 || index >= employees.size()) {
+        System.out.println("Index out of bounds.");
+        return false;
+    }
+    // retrieve the employee object stored at that index
+    Employee emp = employees.get(index);
+
+    // Update fields based on how many parts are present
+    // update only firstName
+    if (parts.length >= 2) {
+        emp.setFirstName(toTitleCase(parts[1]));
+    }
+    // update firstName + secondName
+    if (parts.length >= 3) {
+        emp.setLastName(toTitleCase(parts[2]));
+    }
+    // update all 3 data fields
+    if (parts.length == 4) {
+        String data3 = parts[3];
+        if (!isValidEmail(data3)) {
+            System.out.println("Invalid format for <data3>.");
+            return false;
+        }
+        emp.setEmail(data3);
+    }
+
+    System.out.println("Updated: " + emp);
+    return true;
+}
+
 
     /**
      * List .remove method removes the element at the specified index
