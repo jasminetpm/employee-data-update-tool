@@ -7,7 +7,7 @@ public class AddCommand implements Command {
     private Receiver receiver;
 
     // constructor for receiver with String payload params
-    public AddCommand(Receiver receiver, String payload) {
+    public AddCommand(Receiver receiver, String params) {
         this.receiver = receiver;
         this.params = params;
     }
