@@ -55,38 +55,6 @@ public class Receiver {
     }
 
     /**
-     * add method takes in a String payload and
-     * 1. splits into an array, verifying correct input (3 parts)
-     * 2. applies TitleCase to firstName and lastName
-     * 3. calls isValidEmail to verify <data3> with regex
-     * 4. if no failure, initialize Employee object and add it arrayList
-     *
-     * @param params String input in form "<data1> <data2> <data3>"
-     * @return boolean true if success, false if any failure encountered
-     */
-    public boolean add(String params) {
-        // splits params
-        String[] parts = params.split(" ");
-        if (parts.length != 3) {
-            System.out.println("Invalid payload format. Expected: <data1> <data2> <data3>");
-            return false;
-        }
-        // updates params to desired TitleCase format
-        String firstName = toTitleCase(parts[0]);
-        String lastName = toTitleCase(parts[1]);
-        String email = parts[2];
-        // calls isValidEmail method to verify params email format
-        if (!isValidEmail(email)) {
-            System.out.println("Invalid email format.");
-            return false;
-        }
-        // initialize Employee object with formatted + verified inputs
-        Employee emp = new Employee(firstName, lastName, email);
-        employees.add(emp);
-        return true;
-    }
-
-    /**
      * isValidEmail method verifies the format of String email (<data3> field)
      *
      * @param email String email <data3> split from the payload
