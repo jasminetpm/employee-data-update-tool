@@ -17,7 +17,7 @@ public class Client {
         Command command1 = new AddCommand(receiver, "Jane Doe simple@example.com");
         Command command2 = new AddCommand(receiver, "Hanna Moon tetter.tots@potatoesarelife.com");
         Command command3 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-        Command undoCommanda = new UndoCommand(receiver, history);
+        Command undoCommand = new UndoCommand(receiver, history);
         Command listCommand = new ListCommand(receiver);
 
 //        Command updateCommand = new UpdateCommand(receiver,"3 JANE DOE jane.doe@gmail.com");
