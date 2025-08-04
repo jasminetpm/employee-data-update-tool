@@ -18,6 +18,7 @@ public class Invoker {
             cmd.execute();
             if (!((cmd instanceof UndoCommand) || (cmd instanceof ListCommand))) {
                 history.push(cmd);  // Only add to history if undoable
+                //TODO: filter boolean false cmd
             }
             System.out.println("history "+history);
             System.out.println();
