@@ -17,12 +17,15 @@ public class Client {
         Command command1 = new AddCommand(receiver, "Jane Doe simple@example.com");
         Command command2 = new AddCommand(receiver, "Hanna Moon tetter.tots@potatoesarelife.com");
         Command command3 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-        Command undoCommand = new UndoCommand(receiver, history);
+        Command undoCommanda = new UndoCommand(receiver, history);
         Command listCommand = new ListCommand(receiver);
+
+//        Command updateCommand = new UpdateCommand(receiver,"3 JANE DOE jane.doe@gmail.com");
+        Command updateCommand = new UpdateCommand(receiver,"3 JANE");
 //        Command command4 = new DeleteCommand(receiver,2);
 //        Command[] cmdToExecute = new Command[] {command1, command2, command3, command4};
 
-        Command[] cmdToExecute = new Command[] {command1, command2, command3, undoCommand, listCommand};
+        Command[] cmdToExecute = new Command[] {command1, command2, command3,listCommand, updateCommand, listCommand};
 
         // Test 3
 //        Command updateCommand = new UpdateCommand(receiver,"4 JANE DOE tots.tetter@gmail.com");
