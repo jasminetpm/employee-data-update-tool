@@ -20,8 +20,6 @@ public class Invoker {
                 history.push(cmd);  // Only add to history if undoable
                 //TODO: filter boolean false cmd
             }
-            System.out.println("history "+history);
-            System.out.println();
         }
 
     }
