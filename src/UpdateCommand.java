@@ -48,10 +48,10 @@ public class UpdateCommand implements Command {
         }
 
         // retrieve the employee object stored at that index
-        Employee emp = employees.get(index);
-        String firstName = emp.getFirstName();
-        String lastName = emp.getLastName();
-        String email = emp.getEmail();
+        this.updatedEmployee = employees.get(index);
+        String firstName = updatedEmployee.getFirstName();
+        String lastName = updatedEmployee.getLastName();
+        String email = updatedEmployee.getEmail();
 
         // Update fields based on how many parts are present
         // update only firstName
@@ -71,16 +71,13 @@ public class UpdateCommand implements Command {
             }
             email = data3;
         }
-        this.updatedEmployee = new Employee(firstName, lastName, email);
-
-        receiver.update(index, updatedEmployee);
+        receiver.update(index, new Employee(firstName, lastName, email));
         return true;
     }
 
-    //TODO: undo for update command
     @Override
     public void undo() {
-//        receiver.getEmployees().add(deletedEmployee);
+        receiver.update(index, updatedEmployee);
     }
 
 }
