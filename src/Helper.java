@@ -7,7 +7,7 @@ public class Helper {
      * @param input String to be TitleCased
      * @return String that has been formatted into TitleCase
      */
-    public static String newtoTitleCase(String input) {
+    public static String toTitleCase(String input) {
         if (input == null || input.isEmpty()) return input;
         return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
     }
@@ -17,7 +17,7 @@ public class Helper {
      * @param email String email <data3> split from the payload
      * @return boolean true/false if email passes regex checks
      */
-    public static boolean newisValidEmail(String email) {
+    public static boolean isValidEmail(String email) {
         if (email == null || email.isEmpty()) return false;
 
         // Non-email pattern: only letters, digits, underscores

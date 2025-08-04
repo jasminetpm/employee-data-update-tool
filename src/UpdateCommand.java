@@ -56,16 +56,16 @@ public class UpdateCommand implements Command {
         // Update fields based on how many parts are present
         // update only firstName
         if (parts.length >= 2) {
-            firstName = Helper.newtoTitleCase(parts[1]);
+            firstName = Helper.toTitleCase(parts[1]);
         }
         // update firstName + secondName
         if (parts.length >= 3) {
-            lastName = Helper.newtoTitleCase(parts[2]);
+            lastName = Helper.toTitleCase(parts[2]);
         }
         // update all 3 data fields
         if (parts.length == 4) {
             String data3 = parts[3];
-            if (!Helper.newisValidEmail(data3)) {
+            if (!Helper.isValidEmail(data3)) {
                 System.out.println("Invalid format for <data3>.");
                 return false;
             }
