@@ -152,7 +152,7 @@ public class Receiver {
      * @param params payload String in form of <index> <data>...
      * @return boolean true/false based on operation pass/fail
      */
-    public boolean update(String params) {
+    public boolean update(String params, Employee updatedEmployee) {
         String[] parts = params.split(" ");
         if (parts.length < 2 || parts.length > 4) {
             System.out.println("Invalid payload format. Expected: <index> <data1> <data2> <data3>");
