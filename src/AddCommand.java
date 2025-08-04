@@ -2,7 +2,6 @@ public class AddCommand implements Command {
     //params
     private Employee employee;
     private String params;
-
     //receiver
     private Receiver receiver;
 
@@ -16,16 +15,29 @@ public class AddCommand implements Command {
         this.receiver = receiver;
         this.employee = employee;
     }
-//     execute method for String params
-//    @Override
-//    public void execute() {
-//        receiver.add(params);
-//    }
-
 
     @Override
-    public void execute() {
-        receiver.add(employee);
+    public boolean execute() {
+        // splits params
+        String[] parts = params.split(" ");
+        if (parts.length != 3) {
+            System.out.println("Invalid payload format. Expected: <data1> <data2> <data3>");
+            return false;
+        }
+        // updates params to desired TitleCase format
+        String firstName = Helper.newtoTitleCase(parts[0]);
+        String lastName = Helper.newtoTitleCase(parts[1]);
+        String email = parts[2];
+        // calls isValidEmail method to verify params email format
+        if (!Helper.newisValidEmail(email)) {
+            System.out.println("Invalid email format.");
+            return false;
+        }
+        // initialize Employee object with formatted + verified inputs
+        Employee emp = new Employee(firstName, lastName, email);
+//        employees.add(emp);
+        receiver.add(emp);
+        return true;
     }
 
     @Override
