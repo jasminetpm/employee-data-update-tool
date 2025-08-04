@@ -66,7 +66,7 @@ public class Receiver {
      * @param deletedEmployee
      */
     public void add(int index, Employee deletedEmployee) {
-        employees.add(deletedEmployee);
+        employees.add(index, deletedEmployee);
     }
 
     /**
