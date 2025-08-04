@@ -1,6 +1,6 @@
 public class AddCommand implements Command {
     //params
-    private Employee employee;
+    private Employee addedEmployee;
     private String params;
     //receiver
     private Receiver receiver;
@@ -11,11 +11,16 @@ public class AddCommand implements Command {
         this.params = params;
     }
 
-    public AddCommand(Receiver receiver, Employee employee) {
-        this.receiver = receiver;
-        this.employee = employee;
-    }
-
+    /**
+     * method parses instance variable String params and
+     * 1. splits into an array, verifying correct input (3 parts)
+     * 2. applies TitleCase to firstName and lastName
+     * 3. calls isValidEmail to verify <data3> with regex
+     * 4. if no failure, initialize Employee object and add it arrayList
+     *
+     *
+     * @return boolean true if success, false if any failure encountered
+     */
     @Override
     public boolean execute() {
         // splits params
@@ -34,14 +39,13 @@ public class AddCommand implements Command {
             return false;
         }
         // initialize Employee object with formatted + verified inputs
-        Employee emp = new Employee(firstName, lastName, email);
-//        employees.add(emp);
-        receiver.add(emp);
+        this.addedEmployee = new Employee(firstName, lastName, email);
+        receiver.add(addedEmployee);
         return true;
     }
 
     @Override
     public void undo() {
-        receiver.getEmployees().remove(employee); //remove the Employee object using the List .remove method
+        receiver.getEmployees().remove(addedEmployee); // remove the Employee object using the List .remove method
     }
 }
