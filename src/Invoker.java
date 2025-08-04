@@ -8,22 +8,28 @@ public class Invoker {
         this.cmdToExecute = commands;
     }
 
-    public void executeCommand(Stack<Command> history) throws CommandException {
+    public void executeCommand(Stack<Command> history) {
         if (cmdToExecute == null) {
-            throw new CommandException("No commands set.");
+            System.out.println("No commands set.");
+            return;
         }
 
         else if (cmdToExecute.length == 0) {
-            throw new CommandException("No commands to execute.");
+            System.out.println("No commands to undo.");
+            return;
         }
 
         for (Command cmd : cmdToExecute) {
-            boolean undoableCommand = cmd.execute();
+            try {
+                boolean undoableCommand = cmd.execute();
                 if (undoableCommand) { // Only add to history if undoable
+                    // add/update/delete returns true/false,
+                    // undo/list should always return false as they will never push to history
                     history.push(cmd);
                 }
-                // add/update/delete returns true/false,
-                // undo/list should always return false as they will never push to history
+            } catch (CommandException e) {
+                System.out.println("Error executing command: " + e.getMessage());
+            }
         }
 
     }
