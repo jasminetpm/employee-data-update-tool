@@ -22,11 +22,11 @@ public class Client {
 
 //        Command updateCommand = new UpdateCommand(receiver,"3 JANE DOE jane.doe@gmail.com");
         Command updateCommand = new UpdateCommand(receiver,"3 JANE");
-        Command command4 = new DeleteCommand(receiver,2);
+        Command deleteCommand = new DeleteCommand(receiver,2);
 //        Command[] cmdToExecute = new Command[] {command1, command2, command3, command4};
 
 //        Command[] cmdToExecute = new Command[] {command1, command2, command3, updateCommand,listCommand, undoCommand, listCommand };
-        Command[] cmdToExecute = new Command[] {command1, command2, command3, listCommand, command4, listCommand, undoCommand, listCommand};
+        Command[] cmdToExecute = new Command[] {command1, command2, command3, listCommand, deleteCommand, listCommand, undoCommand, listCommand};
 
         // Test 3
 //        Command updateCommand = new UpdateCommand(receiver,"4 JANE DOE tots.tetter@gmail.com");
