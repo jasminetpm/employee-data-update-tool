@@ -5,7 +5,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Receiver is the data store that holds the actual employee records (in an ArrayList) and implements the logic
@@ -48,49 +47,14 @@ public class Receiver {
         return employees;
     }
 
-
+    /**
+     * method to add an employee to the employees arraylist with .add()
+     *
+     * @param employee takes in employee object to be added to the arraylist
+     */
     public void add(Employee employee) {
         employees.add(employee);
     }
-
-    /**
-     * isValidEmail method verifies the format of String email (<data3> field)
-     *
-     * @param email String email <data3> split from the payload
-     * @return boolean true/false if email passes regex checks
-     */
-    public boolean isValidEmail(String email) {
-        if (email == null || email.isEmpty()) return false;
-
-        // Non-email pattern: only letters, digits, underscores
-        String nonEmailRegex = "^[A-Za-z0-9_]+$";
-
-        // Email pattern based on spec
-        String emailRegex = "^(?![._-])" +                            // Local part must not start with . _ -
-                "(?!.*[.-]{2})" +                         // No consecutive . or -
-                "[A-Za-z0-9._-]+" +                       // Local part characters
-                "(?<![._-])@" +                           // Local part must not end with . _ -
-                "(?![.-])" +                              // Domain must not start with . or -
-                "(?!.*[.-]{2})" +                         // No consecutive . or - in domain
-                "[A-Za-z0-9.-]+" +                        // Domain characters
-                "(?<![.-])\\." +                          // Domain must not end with . or -
-                "[a-z]{2,3}$";                            // Extension: 2–3 lowercase letters
-
-        return Pattern.matches(nonEmailRegex, email) || Pattern.matches(emailRegex, email);
-    }
-
-
-    /**
-     * toTitleCase takes in a String input and formats it into TitleCase
-     *
-     * @param input String to be TitleCased
-     * @return String that has been formatted into TitleCase
-     */
-    public String toTitleCase(String input) {
-        if (input == null || input.isEmpty()) return input;
-        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
-    }
-
 
     /**
      * Overloaded method to undo a delete command and add the deleted employee back.
@@ -104,21 +68,6 @@ public class Receiver {
     public void add(int index, Employee deletedEmployee) {
         employees.add(deletedEmployee);
     }
-
-//    public void update(int index, Employee employee) {
-//        employees.set(index, employee);
-//    }
-
-    /**
-     * update method taking index and updates according to params
-     * checks index for employee and retrieves if it exists
-     * verifies params format for index and data
-     * retrieves employee object from list and updates it
-     * ensuring titlecase and email format
-     *
-     * @param params payload String in form of <index> <data>...
-     * @return boolean true/false based on operation pass/fail
-     */
 
     /**
      * update method taking index and employee object
