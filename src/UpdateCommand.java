@@ -83,7 +83,4 @@ public class UpdateCommand implements Command {
 //        receiver.getEmployees().add(deletedEmployee);
     }
 
-    public void setUpdatedEmployee(Employee updatedEmployee) {
-        this.updatedEmployee = updatedEmployee;
-    }
 }
