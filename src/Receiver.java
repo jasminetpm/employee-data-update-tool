@@ -119,7 +119,7 @@ public class Receiver {
      * @param input String to be TitleCased
      * @return String that has been formatted into TitleCase
      */
-    private String toTitleCase(String input) {
+    public String toTitleCase(String input) {
         if (input == null || input.isEmpty()) return input;
         return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
     }
