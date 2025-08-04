@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Stack;
 
 public class Invoker {
@@ -14,12 +15,12 @@ public class Invoker {
         }
 
         for (Command cmd : cmdToExecute) {
-            if (cmd != null) {
-                cmd.execute();
-                //TODO: check execute's boolean return to decide if we should .push
-                // should we push list commands?
+            cmd.execute();
+            if (!((cmd instanceof UndoCommand) || (cmd instanceof ListCommand))) {
                 history.push(cmd);  // Only add to history if undoable
             }
+            System.out.println("history "+history);
+            System.out.println();
         }
 
     }
