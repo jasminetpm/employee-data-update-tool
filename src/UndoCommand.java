@@ -5,9 +5,11 @@ public class UndoCommand implements Command {
 
     //history
     private Stack<Command> history;
+    private Receiver receiver;
 
-    public UndoCommand(Receiver receiver, String params) {
+    public UndoCommand(Receiver receiver,  Stack<Command> history) {
         this.history = history;
+        this.receiver = receiver;
     }
 
     @Override
