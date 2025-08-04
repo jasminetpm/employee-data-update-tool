@@ -9,6 +9,7 @@ public class DeleteCommand implements Command {
     public DeleteCommand(Receiver receiver, int index) {
         this.receiver = receiver;
         this.index = index-1; //index is based off -1 of the index shown using the List command
+
     }
 
     /**
@@ -29,6 +30,6 @@ public class DeleteCommand implements Command {
 
     @Override
     public void undo() {
-        receiver.getEmployees().add(deletedEmployee);
+        receiver.getEmployees().add(index,deletedEmployee);
     }
 }
