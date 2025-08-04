@@ -24,8 +24,9 @@ public class AddCommand implements Command {
 
 
     @Override
-    public void execute() {
+    public boolean execute() {
         receiver.add(employee);
+        return true;
     }
 
     @Override

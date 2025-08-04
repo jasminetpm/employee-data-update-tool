@@ -9,12 +9,14 @@ public class ListCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (receiver.getEmployees().isEmpty()) {
             System.out.println("No employees.");
+            return false;
         }
         else {
             receiver.list();
+            return true;
         }
     }
 
