@@ -13,8 +13,10 @@ public class UpdateCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
+        // @jinghan please add in update checking logic
         receiver.update(params, updatedEmployee);
+        return true;
     }
 
     @Override

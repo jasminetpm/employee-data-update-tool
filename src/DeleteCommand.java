@@ -17,14 +17,16 @@ public class DeleteCommand implements Command {
      * Then deletes the element at the index, if valid
      */
     @Override
-    public void execute() {
+    public boolean execute() {
         if (index >= 0 && index < receiver.getEmployees().size()) {
             // Store the deleted employee for undo method to use
             deletedEmployee = receiver.getEmployees().get(index);
             // deletes the element at the index
             receiver.delete(index);
+            return true;
         } else {
             System.out.println("Invalid index for delete.");
+            return false;
         }
     }
 
