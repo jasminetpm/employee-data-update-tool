@@ -14,14 +14,18 @@ public class Invoker {
             return;
         }
 
+        else if (cmdToExecute.length == 0) {
+            System.out.println("No commands to execute.");
+            return;
+        }
+
         for (Command cmd : cmdToExecute) {
-            cmd.execute();
-            if (!((cmd instanceof UndoCommand) || (cmd instanceof ListCommand))) {
-                history.push(cmd);  // Only add to history if undoable
-                //TODO: filter boolean false cmd
-                // add/update/delete can return true/false,
+            boolean undoableCommand = cmd.execute();
+                if (undoableCommand) { // Only add to history if undoable
+                    history.push(cmd);
+                }
+                // add/update/delete returns true/false,
                 // undo/list should always return false as they will never push to history
-            }
         }
 
     }
