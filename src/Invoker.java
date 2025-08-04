@@ -19,6 +19,8 @@ public class Invoker {
             if (!((cmd instanceof UndoCommand) || (cmd instanceof ListCommand))) {
                 history.push(cmd);  // Only add to history if undoable
                 //TODO: filter boolean false cmd
+                // add/update/delete can return true/false,
+                // undo/list should always return false as they will never push to history
             }
         }
 
