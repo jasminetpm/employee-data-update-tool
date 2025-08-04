@@ -8,15 +8,13 @@ public class Invoker {
         this.cmdToExecute = commands;
     }
 
-    public void executeCommand(Stack<Command> history) {
+    public void executeCommand(Stack<Command> history) throws CommandException {
         if (cmdToExecute == null) {
-            System.out.println("No commands set.");
-            return;
+            throw new CommandException("No commands set.");
         }
 
         else if (cmdToExecute.length == 0) {
-            System.out.println("No commands to execute.");
-            return;
+            throw new CommandException("No commands to execute.");
         }
 
         for (Command cmd : cmdToExecute) {

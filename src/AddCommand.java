@@ -22,12 +22,11 @@ public class AddCommand implements Command {
      * @return boolean true if success, false if any failure encountered
      */
     @Override
-    public boolean execute() {
+    public boolean execute() throws CommandException {
         // splits params
         String[] parts = params.split(" ");
         if (parts.length != 3) {
-            System.out.println("Invalid payload format. Expected: <data1> <data2> <data3>");
-            return false;
+            throw new CommandException("Invalid payload format. Expected: <data1> <data2> <data3>");
         }
         // updates params to desired TitleCase format
         String firstName = Helper.toTitleCase(parts[0]);
@@ -35,8 +34,7 @@ public class AddCommand implements Command {
         String email = parts[2];
         // calls isValidEmail method to verify params email format
         if (!Helper.isValidEmail(email)) {
-            System.out.println("Invalid email format.");
-            return false;
+            throw new CommandException("Invalid email format.");
         }
         // initialize Employee object with formatted + verified inputs
         this.addedEmployee = new Employee(firstName, lastName, email);

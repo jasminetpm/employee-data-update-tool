@@ -17,7 +17,7 @@ public class DeleteCommand implements Command {
      * Then deletes the element at the index, if valid
      */
     @Override
-    public boolean execute() {
+    public boolean execute() throws CommandException {
         if (index >= 0 && index < receiver.getEmployees().size()) {
             // Store the deleted employee for undo method to use
             deletedEmployee = receiver.getEmployees().get(index);
@@ -25,8 +25,7 @@ public class DeleteCommand implements Command {
             receiver.delete(index);
             return true;
         } else {
-            System.out.println("Invalid index for delete.");
-            return false;
+            throw new CommandException("Invalid index provided for delete command.");
         }
     }
 

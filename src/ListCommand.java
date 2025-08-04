@@ -9,9 +9,9 @@ public class ListCommand implements Command {
     }
 
     @Override
-    public boolean execute() {
+    public boolean execute() throws CommandException {
         if (receiver.getEmployees().isEmpty()) {
-            System.out.println("No employees.");
+            throw new CommandException("No employees.");
         }
         else {
             receiver.list();
