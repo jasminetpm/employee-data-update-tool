@@ -12,12 +12,11 @@ public class ListCommand implements Command {
     public boolean execute() {
         if (receiver.getEmployees().isEmpty()) {
             System.out.println("No employees.");
-            return false;
         }
         else {
             receiver.list();
-            return true;
         }
+        return false;
     }
 
     @Override

@@ -17,15 +17,13 @@ public class UndoCommand implements Command {
         if (!history.isEmpty()) {
             Command last = history.pop();
             last.undo();
-            return true;
         } else {
             System.out.println("Nothing to undo.");
-            return false;
         }
+        return false;
     }
 
     @Override
     public void undo() {
-
     }
 }
