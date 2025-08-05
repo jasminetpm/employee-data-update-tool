@@ -36,6 +36,9 @@ public class AddCommand implements Command {
         if (!Helper.isValidEmail(email)) {
             throw new CommandException("Invalid email format.");
         }
+        if (Helper.matchesNonEmailRegex(email)) {
+            email = Helper.toTitleCase(email);
+        }
         // initialize Employee object with formatted + verified inputs
         this.addedEmployee = new Employee(firstName, lastName, email);
         System.out.println("add");

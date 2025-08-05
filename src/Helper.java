@@ -33,7 +33,12 @@ public class Helper {
                 "[A-Za-z0-9.-]+" +                        // Domain characters
                 "(?<![.-])\\." +                          // Domain must not end with . or -
                 "[a-z]{2,3}$";                            // Extension: 2–3 lowercase letters
-
         return Pattern.matches(nonEmailRegex, email) || Pattern.matches(emailRegex, email);
     }
+    public static boolean matchesNonEmailRegex(String email) {
+        // Non-email pattern: only letters, digits, underscores
+        String nonEmailRegex = "^[A-Za-z0-9_]+$";
+        return Pattern.matches(nonEmailRegex, email);
+    }
+
 }
