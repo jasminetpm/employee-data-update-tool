@@ -75,10 +75,7 @@ public class UpdateCommand implements Command {
                 System.out.println("Invalid format for <data3>.");
                 return false;
             }
-            email = data3;
-            if (Helper.matchesNonEmailRegex(email)) {
-                email = Helper.toTitleCase(email);
-            }
+            email = Helper.toTitleCase(data3);
         }
         System.out.println("update");
         receiver.update(index, new Employee(firstName, lastName, email));
