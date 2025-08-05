@@ -38,6 +38,7 @@ public class AddCommand implements Command {
         }
         // initialize Employee object with formatted + verified inputs
         this.addedEmployee = new Employee(firstName, lastName, email);
+        System.out.println("add");
         receiver.add(addedEmployee);
         return true;
     }

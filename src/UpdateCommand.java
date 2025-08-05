@@ -71,6 +71,7 @@ public class UpdateCommand implements Command {
             }
             email = data3;
         }
+        System.out.println("update");
         receiver.update(index, new Employee(firstName, lastName, email));
         return true;
     }

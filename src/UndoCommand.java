@@ -16,6 +16,7 @@ public class UndoCommand implements Command {
     public boolean execute() throws CommandException {
         if (!history.isEmpty()) {
             Command last = history.pop();
+            System.out.println("Undo");
             last.undo();
         } else {
             throw new CommandException("Nothing to undo.");

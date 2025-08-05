@@ -22,6 +22,7 @@ public class DeleteCommand implements Command {
             // Store the deleted employee for undo method to use
             deletedEmployee = receiver.getEmployees().get(index);
             // deletes the element at the index
+            System.out.println("Delete");
             receiver.delete(index);
             return true;
         } else {
