@@ -11,7 +11,7 @@ public class DeleteCommand implements Command {
         try {
             this.index = Integer.parseInt(index) - 1; //index is based off -1 of the index shown using the List command
         } catch (NumberFormatException e) {
-            throw new CommandException("Invalid index: please enter a whole number.");
+            System.out.println("Invalid index: please enter a whole number.");
         }
     }
 
