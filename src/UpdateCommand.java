@@ -70,6 +70,9 @@ public class UpdateCommand implements Command {
                 return false;
             }
             email = data3;
+            if (Helper.matchesNonEmailRegex(email)) {
+                email = Helper.toTitleCase(email);
+            }
         }
         System.out.println("update");
         receiver.update(index, new Employee(firstName, lastName, email));
