@@ -26,7 +26,7 @@ public class Client {
 
         Command updateCommand = new UpdateCommand(receiver,"1.0 JANE DOE jane.doe@gmail.com");
 //        Command updateCommand = new UpdateCommand(receiver,"0 JENNY");
-//        Command deleteCommand = new DeleteCommand(receiver,"1.0");
+        Command deleteCommand = new DeleteCommand(receiver,"1.0");
 //        Command deleteCommand2 = new DeleteCommand(receiver,"3");
 
 //        Command[] cmdToExecute = new Command[] {command1, command2, command3,deleteCommand,listCommand,updateCommand,undoCommand,deleteCommand2,listCommand};

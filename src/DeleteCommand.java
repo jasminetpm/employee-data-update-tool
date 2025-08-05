@@ -6,7 +6,7 @@ public class DeleteCommand implements Command {
     //receiver
     private Receiver receiver;
 
-    public DeleteCommand(Receiver receiver, String index) throws CommandException {
+    public DeleteCommand(Receiver receiver, String index) {
         this.receiver = receiver;
         try {
             this.index = Integer.parseInt(index) - 1; //index is based off -1 of the index shown using the List command
