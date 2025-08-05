@@ -1,6 +1,7 @@
 public class DeleteCommand implements Command {
     //params
-    private int index;
+    private String index;
+    private int indexNum;
     private Employee deletedEmployee;
 
     //receiver
@@ -8,11 +9,7 @@ public class DeleteCommand implements Command {
 
     public DeleteCommand(Receiver receiver, String index) {
         this.receiver = receiver;
-        try {
-            this.index = Integer.parseInt(index) - 1; //index is based off -1 of the index shown using the List command
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid index: please enter a whole number.");
-        }
+        this.index = index;
     }
 
     /**
@@ -21,20 +18,26 @@ public class DeleteCommand implements Command {
      */
     @Override
     public boolean execute() throws CommandException {
-        if (index >= 0 && index < receiver.getEmployees().size()) {
-            // Store the deleted employee for undo method to use
-            deletedEmployee = receiver.getEmployees().get(index);
-            // deletes the element at the index
-            System.out.println("Delete");
-            receiver.delete(index);
-            return true;
-        } else {
-            throw new CommandException("Invalid index provided for delete command.");
+        try {
+            indexNum = Integer.parseInt(index) - 1; //index is based off -1 of the index shown using the List command
+            if (indexNum >= 0 && indexNum < receiver.getEmployees().size()) {
+                // Store the deleted employee for undo method to use
+                deletedEmployee = receiver.getEmployees().get(indexNum);
+                // deletes the element at the index
+                System.out.println("Delete");
+                receiver.delete(indexNum);
+                return true;
+            } else {
+                throw new CommandException("Invalid index provided for delete command.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid index type: please enter a whole number.");
+            return false;
         }
     }
 
     @Override
     public void undo() {
-        receiver.getEmployees().add(index,deletedEmployee);
+        receiver.getEmployees().add(indexNum,deletedEmployee);
     }
 }

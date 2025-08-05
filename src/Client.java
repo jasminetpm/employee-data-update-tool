@@ -31,7 +31,7 @@ public class Client {
 
 //        Command[] cmdToExecute = new Command[] {command1, command2, command3,deleteCommand,listCommand,updateCommand,undoCommand,deleteCommand2,listCommand};
 //        Command[] cmdToExecute = new Command[] {command1, listCommand, listCommand, listCommand,undoCommand, listCommand, undoCommand};
-        Command[] cmdToExecute = new Command[] {command1,updateCommand,listCommand};
+        Command[] cmdToExecute = new Command[] {command1,command2, updateCommand, deleteCommand, listCommand};
 //        Command[] cmdToExecute = {command1,deleteCommand};
 
 //        Command[] cmdToExecute = new Command[] {command1, command2, command3, updateCommand,listCommand, undoCommand, listCommand };
