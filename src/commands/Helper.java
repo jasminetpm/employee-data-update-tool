@@ -10,9 +10,12 @@ public class Helper {
      * @return String that has been formatted into TitleCase
      */
     public static String toTitleCase(String input) {
-        if (input == null || input.isEmpty()) return input;
+        if (input == null || input.isEmpty() || input.contains("@")) {
+            return input;
+        }
         return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
     }
+
     /**
      * isValidEmail method verifies the format of String email (<data3> field)
      *
@@ -26,21 +29,16 @@ public class Helper {
         String nonEmailRegex = "^[A-Za-z0-9_]+$";
 
         // Email pattern based on spec
-        String emailRegex = "^(?![.-])" +                            // Local part must not start with . _ -
+        String emailRegex = "^(?![.-])" +                  // Local part must not start with . or -
                 "(?!.*[.-]{2})" +                         // No consecutive . or -
                 "[A-Za-z0-9._-]+" +                       // Local part characters
-                "(?<![.-])@" +                           // Local part must not end with . _ -
+                "(?<![.-])@" +                           // Local part must not end with . or -
                 "(?![.-])" +                              // Domain must not start with . or -
                 "(?!.*[.-]{2})" +                         // No consecutive . or - in domain
                 "[A-Za-z0-9.-]+" +                        // Domain characters
                 "(?<![.-])\\." +                          // Domain must not end with . or -
                 "[a-z]{2,3}$";                            // Extension: 2–3 lowercase letters
         return Pattern.matches(nonEmailRegex, email) || Pattern.matches(emailRegex, email);
-    }
-    public static boolean matchesNonEmailRegex(String email) {
-        // Non-email pattern: only letters, digits, underscores
-        String nonEmailRegex = "^[A-Za-z0-9_]+$";
-        return Pattern.matches(nonEmailRegex, email);
     }
 
 }
