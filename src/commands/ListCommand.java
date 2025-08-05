@@ -1,3 +1,7 @@
+package commands;
+
+import receiver.Receiver;
+
 public class ListCommand implements Command {
     // No params because no inputs required
 

@@ -1,3 +1,5 @@
+package exceptions;
+
 /**
  * Custom exception class for all non Throwable error messages
  */

@@ -1,3 +1,7 @@
+package receiver;
+
+import employee.Employee;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Receiver is the data store that holds the actual employee records (in an ArrayList) and implements the logic
+ * receiver.Receiver is the data store that holds the actual employee records (in an ArrayList) and implements the logic
  */
 public class Receiver {
     private List<Employee> employees;
@@ -23,7 +27,7 @@ public class Receiver {
      *  initializeEmployees checks if dataStore.txt exists
      *  if it doesn't, it creates empty employees ArrayList and returns
      *  if it does, it loads data into employees ArrayList and returns
-     * @return returns empty ArrayList<Employee> or with contents from dataStore if applicable
+     * @return returns empty ArrayList<employee.Employee> or with contents from dataStore if applicable
      */
     public static ArrayList<Employee> initializeEmployees() {
         // initialize empty employees ArrayList
@@ -103,7 +107,7 @@ public class Receiver {
 
     /**
      * storeToFile() takes in employees ArrayList and overwrites the
-     * dataStore.txt at the end of Client.java's execution
+     * dataStore.txt at the end of client.Client.java's execution
      */
     public void storeToFile() {
         Path filePath = Paths.get("src/dataStore.txt");

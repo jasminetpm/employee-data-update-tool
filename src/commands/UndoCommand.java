@@ -1,3 +1,8 @@
+package commands;
+
+import exceptions.CommandException;
+import receiver.Receiver;
+
 import java.util.Stack;
 
 public class UndoCommand implements Command {
@@ -7,7 +12,7 @@ public class UndoCommand implements Command {
     private Stack<Command> history;
     private Receiver receiver;
 
-    public UndoCommand(Receiver receiver,  Stack<Command> history) {
+    public UndoCommand(Receiver receiver, Stack<Command> history) {
         this.history = history;
         this.receiver = receiver;
     }

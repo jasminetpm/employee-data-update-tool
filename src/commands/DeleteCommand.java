@@ -1,3 +1,9 @@
+package commands;
+
+import employee.Employee;
+import exceptions.CommandException;
+import receiver.Receiver;
+
 public class DeleteCommand implements Command {
     //params
     private String index;

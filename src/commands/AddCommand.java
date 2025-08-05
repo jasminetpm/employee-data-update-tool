@@ -1,3 +1,8 @@
+package commands;
+import receiver.Receiver;
+import employee.Employee;
+import exceptions.CommandException;
+
 public class AddCommand implements Command {
     //params
     private Employee addedEmployee;
@@ -16,7 +21,7 @@ public class AddCommand implements Command {
      * 1. splits into an array, verifying correct input (3 parts)
      * 2. applies TitleCase to firstName and lastName
      * 3. calls isValidEmail to verify <data3> with regex
-     * 4. if no failure, initialize Employee object and add it arrayList
+     * 4. if no failure, initialize employee.Employee object and add it arrayList
      *
      *
      * @return boolean true if success, false if any failure encountered
@@ -39,7 +44,7 @@ public class AddCommand implements Command {
         if (Helper.matchesNonEmailRegex(email)) {
             email = Helper.toTitleCase(email);
         }
-        // initialize Employee object with formatted + verified inputs
+        // initialize employee.Employee object with formatted + verified inputs
         this.addedEmployee = new Employee(firstName, lastName, email);
         System.out.println("add");
         receiver.add(addedEmployee);
@@ -48,6 +53,6 @@ public class AddCommand implements Command {
 
     @Override
     public void undo() {
-        receiver.getEmployees().remove(addedEmployee); // remove the Employee object using the List .remove method
+        receiver.getEmployees().remove(addedEmployee); // remove the employee.Employee object using the List .remove method
     }
 }
