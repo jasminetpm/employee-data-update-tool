@@ -14,13 +14,13 @@ public class Client {
 
 
         // Test 1
-        Command command1 = new AddCommand(receiver, "Jane Doe email109");
-        Command command2 = new AddCommand(receiver, "Hanna Moon tetter.tots@potatoesarelife.com");
-        Command command3 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-        Command command4 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-        Command command5 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-        Command command6 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-        Command undoCommand = new UndoCommand(receiver, history);
+//        Command command1 = new AddCommand(receiver, "Jane Doe email109");
+//        Command command2 = new AddCommand(receiver, "Hanna Moon tetter.tots@potatoesarelife.com");
+//        Command command3 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
+//        Command command4 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
+//        Command command5 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
+//        Command command6 = new AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
+//        Command undoCommand = new UndoCommand(receiver, history);
         Command listCommand = new ListCommand(receiver);
 
 
@@ -31,7 +31,7 @@ public class Client {
 
 //        Command[] cmdToExecute = new Command[] {command1, command2, command3,deleteCommand,listCommand,updateCommand,undoCommand,deleteCommand2,listCommand};
 //        Command[] cmdToExecute = new Command[] {command1, listCommand, listCommand, listCommand,undoCommand, listCommand, undoCommand};
-        Command[] cmdToExecute = new Command[] {command1,command2, updateCommand, deleteCommand, listCommand};
+        Command[] cmdToExecute = new Command[] {listCommand};
 //        Command[] cmdToExecute = {command1,deleteCommand};
 
 //        Command[] cmdToExecute = new Command[] {command1, command2, command3, updateCommand,listCommand, undoCommand, listCommand };

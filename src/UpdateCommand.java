@@ -27,6 +27,7 @@ public class UpdateCommand implements Command {
     @Override
     public boolean execute() {
         String[] parts = params.split(" ");
+
         List<Employee> employees = receiver.getEmployees();
 
         if (parts.length < 2 || parts.length > 4) {
