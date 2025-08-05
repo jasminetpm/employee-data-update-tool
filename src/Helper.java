@@ -24,10 +24,10 @@ public class Helper {
         String nonEmailRegex = "^[A-Za-z0-9_]+$";
 
         // Email pattern based on spec
-        String emailRegex = "^(?![._-])" +                            // Local part must not start with . _ -
+        String emailRegex = "^(?![.-])" +                            // Local part must not start with . _ -
                 "(?!.*[.-]{2})" +                         // No consecutive . or -
                 "[A-Za-z0-9._-]+" +                       // Local part characters
-                "(?<![._-])@" +                           // Local part must not end with . _ -
+                "(?<![.-])@" +                           // Local part must not end with . _ -
                 "(?![.-])" +                              // Domain must not start with . or -
                 "(?!.*[.-]{2})" +                         // No consecutive . or - in domain
                 "[A-Za-z0-9.-]+" +                        // Domain characters
