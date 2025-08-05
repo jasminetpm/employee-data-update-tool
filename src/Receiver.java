@@ -115,7 +115,7 @@ public class Receiver {
             }
             System.out.println("Updated employee list saved to " + filePath.toAbsolutePath());
 
-        } catch (CommandException e) {
+        } catch (IOException e) {
             System.err.println("Error: Failed to write file: " + e.getMessage());
         }
     }
