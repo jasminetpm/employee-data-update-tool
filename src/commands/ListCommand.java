@@ -26,6 +26,7 @@ public class ListCommand implements Command {
 
     /**
      * executes list command by invoking receiver.list();
+     * Displays all employees in the receiver.
      *
      * @return boolean false so command is not pushed into history stack
      */

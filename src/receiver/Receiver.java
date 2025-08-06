@@ -22,7 +22,7 @@ public class Receiver {
     private List<Employee> employees;
 
     /**
-     * Constructs new Receiver instance
+     * Constructs new Receiver instance with an empty list of employees.
      * It initializes employees through initializeEmployees();
      * Loading from dataStore.txt if available, else creates empty arraylist
      */

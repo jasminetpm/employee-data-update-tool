@@ -7,9 +7,10 @@ import exceptions.CommandException;
 import java.util.Stack;
 
 /**
- * Invoker class responsible for executing commands array through their
- * respectively execute() methods.
+ * Invoker class responsible for executing a batch of commands in the
+ * command array through their respective execute() methods.
  * Invoker also pushes successful Add/Delete/Update Commands into history stack
+ * for undo functionality
  */
 public class Invoker {
     /**

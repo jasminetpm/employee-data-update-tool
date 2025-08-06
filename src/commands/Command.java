@@ -14,6 +14,8 @@ public interface Command {
      * such as adding/deleting/updating/etc.
      *
      * @return true/false based on execution's success
+     *          true if the command is undoable and should be added to the history stack;
+     *          false if the command is not unaoable (e.g. a list command or undo command).
      * @throws CommandException if execution fails due to invalid
      *                          input/errors/business rule violations
      */
@@ -23,6 +25,7 @@ public interface Command {
     /**
      * reverses most recently executed command, restoring the system
      * to its prior state
+     * This method should only be implemented by commands that are marked as undoable
      */
     public void undo();
 

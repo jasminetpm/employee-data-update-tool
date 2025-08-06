@@ -8,7 +8,9 @@ import receiver.Receiver;
  * DeleteCommand class implements Command interface.
  * It contains the logic for deleting (and its undo) an employee from the system.
  * Executing the command parses a payload String, validates its formats,
- * and deletes the employee at index through receiver.delete().
+ * and deletes the employee at a specified index through receiver.delete().
+ * Note: This command supports undo functionality, allowing the deleted employee
+ * to be restored if necessary.
  */
 public class DeleteCommand implements Command {
     /**

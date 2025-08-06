@@ -8,6 +8,7 @@ import java.util.Stack;
 
 /**
  * Client class is the entry for our command-based application
+ * and acts as the controller in the Command design pattern.
  * It creates stack to maintain command history, instantiates receiver
  * to handle business logic, invoker manages command executions.
  * Commands are instantiated and added to a Command[] array,

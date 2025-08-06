@@ -43,7 +43,9 @@ public class AddCommand implements Command {
      * 4. handles failures with exceptions
      * 5. if successful, initialize Employee object and passes to receiver.add()
      *
-     * @return boolean true if success, false if any failure encountered
+     * @return boolean true if success (indicating the command is undoable and can be stored in history)
+     * , false if any failure encountered
+     * @throws CommandException if an error occurs during the add operation
      */
     @Override
     public boolean execute() throws CommandException {
