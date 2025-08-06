@@ -8,7 +8,7 @@ import exceptions.CommandException;
  * The AddCommand class implements Command interface.
  * It handles the logic for adding (and its undo) to employees arraylist.
  * Executing the command parses a payload String, validates its formats,
- * and passes the valid employee data to Receiver.java for adding.
+ * and passes the valid employee data to receiver.add() for adding.
  */
 public class AddCommand implements Command {
     /**
