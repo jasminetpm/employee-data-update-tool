@@ -36,7 +36,7 @@ public class Employee {
      * Returns string representation of employee in format:
      * <firstName> <lastName> <email>
      *
-     * @return formateed string representing the employee
+     * @return formatted string representing the employee
      */
     public String toString() {
         return firstName + " " + lastName + " " + email;
