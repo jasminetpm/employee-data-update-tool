@@ -22,9 +22,10 @@ public class Employee {
 
     /**
      * Constructs new employee with specified params below
+     *
      * @param firstName employee's first name
-     * @param lastName employee's last name
-     * @param email employee's email address
+     * @param lastName  employee's last name
+     * @param email     employee's email address
      */
     public Employee(String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -44,6 +45,7 @@ public class Employee {
 
     /**
      * Returns employee's last name
+     *
      * @return employee's last name
      */
     public String getLastName() {
@@ -52,6 +54,7 @@ public class Employee {
 
     /**
      * Returns employee's email or data3 equivalent
+     *
      * @return employee's email or data3 equivalent
      */
     public String getEmail() {

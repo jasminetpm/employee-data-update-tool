@@ -30,8 +30,9 @@ public class DeleteCommand implements Command {
 
     /**
      * public constructor for the class DeleteCommand
+     *
      * @param receiver object to link to receiver class
-     * @param index payload in format <index> of employee to be deleted
+     * @param index    payload in format <index> of employee to be deleted
      */
     public DeleteCommand(Receiver receiver, String index) {
         this.receiver = receiver;
@@ -42,6 +43,7 @@ public class DeleteCommand implements Command {
      * Checks if the index input is valid, and deletes the element at
      * the index if it is valid. Verifies index format is valid and
      * calls receiver.delete(indexNum).
+     *
      * @return boolean true/false based on delete success
      * @throws CommandException is thrown if index is invalid
      */

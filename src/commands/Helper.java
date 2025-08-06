@@ -12,6 +12,7 @@ public class Helper {
     /**
      * toTitleCase takes in a String input and formats it into TitleCase
      * if the String is null/empty/contains "@", return same input
+     *
      * @param input String to be TitleCased
      * @return String that has been formatted into TitleCase
      */
@@ -25,6 +26,7 @@ public class Helper {
     /**
      * isValidEmail method verifies the format of String email (<data3> field)
      * regex checks for either valid email or valid non-email formats
+     *
      * @param email String email <data3> split from the payload
      * @return boolean true/false if email passes regex checks
      */

@@ -6,6 +6,7 @@ package exceptions;
 public class CommandException extends Exception {
     /**
      * Constructs a new CommandException with specific message.
+     *
      * @param message details describing the error
      */
     public CommandException(String message) {

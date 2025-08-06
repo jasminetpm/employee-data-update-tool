@@ -1,4 +1,5 @@
 package commands;
+
 import exceptions.CommandException;
 
 /**
@@ -14,7 +15,7 @@ public interface Command {
      *
      * @return true/false based on execution's success
      * @throws CommandException if execution fails due to invalid
-     * input/errors/business rule violations
+     *                          input/errors/business rule violations
      */
     public boolean execute() throws CommandException;
 
