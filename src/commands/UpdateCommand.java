@@ -5,6 +5,12 @@ import receiver.Receiver;
 
 import java.util.List;
 
+/**
+ * UpdateCommand class implements Command interface.
+ * It handles the logic for updating (and its undo) existing employees.
+ * Executing the command parses a payload String, validates its formats,
+ * and passes the valid employee with index to receiver.update() for updating.
+ */
 public class UpdateCommand implements Command {
     /**
      * command payload received from client
@@ -15,7 +21,7 @@ public class UpdateCommand implements Command {
      */
     private int index;
     /**
-     * employee object of the employee we wish to update
+     * employee object of the employee before updating
      */
     private Employee updatedEmployee;
     /**
@@ -35,9 +41,8 @@ public class UpdateCommand implements Command {
     }
 
     /**
-     * method execute parses payloads for index and data1-3
-     * verifies payload format
-     * checks index if employee exists
+     * Method execute parses payloads for index and data1-3.
+     * Verifies payload format, checks index if employee exists,
      * calls receiver.update(index, updatedEmployee); to update the employee
      *
      * @return boolean true/false based on update success
@@ -94,8 +99,8 @@ public class UpdateCommand implements Command {
     }
 
     /**
-     * Overridden undo method to undo and update command
-     * calls receiver.update with the saved data of overridden employee
+     * Overridden undo method to undo an update command
+     * calls receiver.update() with the saved data of overridden employee
      */
     @Override
     public void undo() {
