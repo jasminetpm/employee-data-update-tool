@@ -77,8 +77,8 @@ public class Receiver {
      * Existing elements at or after that index are shifted to the right
      * (their indices are incremented) to accommodate the new element
      *
-     * @param index
-     * @param deletedEmployee
+     * @param index           position to insert the employee
+     * @param deletedEmployee the employee to re-add
      */
     public void add(int index, Employee deletedEmployee) {
         employees.add(index, deletedEmployee);
