@@ -6,6 +6,7 @@ import receiver.Receiver;
  * ListCommand class implements Command interface.
  * This command displays the current list of employees
  * by calling receiver.list();
+ * Note: This command itself is not undoable, always returns false
  */
 public class ListCommand implements Command {
 
