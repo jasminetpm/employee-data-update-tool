@@ -72,12 +72,11 @@ public class UpdateCommand implements Command {
         }
         // retrieve and store the employee object stored at that index
         this.updatedEmployee = employees.get(index);
-        String firstName = updatedEmployee.getFirstName();
+        // always titlecase firstName as valid payloads will at least have <data1>
+        String firstName = Helper.toTitleCase(parts[1]);
         String lastName = updatedEmployee.getLastName();
         String email = updatedEmployee.getEmail();
         // Update fields based on how many parts are present and add titlecase
-        // update only firstName
-        firstName = Helper.toTitleCase(parts[1]);
         // update firstName + lastName
         if (parts.length >= 3) {
             lastName = Helper.toTitleCase(parts[2]);
