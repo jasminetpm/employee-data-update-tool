@@ -4,9 +4,15 @@ import receiver.Receiver;
 import employee.Employee;
 import exceptions.CommandException;
 
+/**
+ * The AddCommand class implements Command interface.
+ * It handles the logic for adding (and its undo) to employees arraylist.
+ * Executing the command parses a payload String, validates its formats,
+ * and passes the valid employee data to Receiver.java for adding.
+ */
 public class AddCommand implements Command {
     /**
-     * employee object of the employee we wish to add
+     * employee object of the employee we added
      */
     private Employee addedEmployee;
     /**
@@ -33,8 +39,9 @@ public class AddCommand implements Command {
      * method parses instance variable String params and
      * 1. splits into an array, verifying correct input (3 parts)
      * 2. applies TitleCase to firstName and lastName
-     * 3. calls isValidEmail to verify <data3> with regex
-     * 4. if no failure, initialize employee.Employee object and add it arrayList
+     * 3. calls isValidEmail to verify <data3> with regex, TitleCases email if needed
+     * 4. handles failures with exceptions
+     * 5. if successful, initialize Employee object and passes to receiver.add()
      *
      * @return boolean true if success, false if any failure encountered
      */
@@ -63,7 +70,7 @@ public class AddCommand implements Command {
 
     /**
      * Overridden undo method to undo an add command
-     * calls receiver.update with the saved data of overridden employee
+     * calls receiver.update() with the saved data of overridden employee
      */
     @Override
     public void undo() {
