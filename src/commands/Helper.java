@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class Helper {
     /**
      * toTitleCase takes in a String input and formats it into TitleCase
-     *
+     * if the String is null/empty/contains "@", return same input
      * @param input String to be TitleCased
      * @return String that has been formatted into TitleCase
      */
@@ -18,7 +18,7 @@ public class Helper {
 
     /**
      * isValidEmail method verifies the format of String email (<data3> field)
-     *
+     * regex checks for either valid email or valid non-email formats
      * @param email String email <data3> split from the payload
      * @return boolean true/false if email passes regex checks
      */
@@ -33,11 +33,11 @@ public class Helper {
                 "(?!.*[.-]{2})" +                         // No consecutive . or -
                 "[A-Za-z0-9._-]+" +                       // Local part characters
                 "(?<![.-])@" +                           // Local part must not end with . or -
-                "(?![.-])" +                              // Domain must not start with . or -
-                "(?!.*[.-]{2})" +                         // No consecutive . or - in domain
-                "[A-Za-z0-9.-]+" +                        // Domain characters
-                "(?<![.-])\\." +                          // Domain must not end with . or -
-                "[a-z]{2,3}$";                            // Extension: 2–3 lowercase letters
+                "(?![.-])" +                              // Domain1 must not start with . or -
+                "(?!.*[.-]{2})" +                         // No consecutive . or - in Domain1
+                "[A-Za-z0-9.-]+" +                        // Domain1 characters
+                "(?<![.-])\\." +                          // Domain1 must not end with . or -
+                "[a-z]{2,3}$";                            // Domain2: 2–3 lowercase letters
         return Pattern.matches(nonEmailRegex, email) || Pattern.matches(emailRegex, email);
     }
 
