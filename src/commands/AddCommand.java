@@ -1,16 +1,29 @@
 package commands;
+
 import receiver.Receiver;
 import employee.Employee;
 import exceptions.CommandException;
 
 public class AddCommand implements Command {
-    //params
+    /**
+     * employee object of the employee we wish to add
+     */
     private Employee addedEmployee;
+    /**
+     * command payload received from client
+     */
     private String params;
-    //receiver
+    /**
+     * receiver object passed into the constructor from the client
+     */
     private Receiver receiver;
 
-    // constructor for receiver with String payload params
+    /**
+     * public constructor for the class AddCommand
+     *
+     * @param receiver object to link to receiver class
+     * @param params   payload in format <data1> <data2> <data3>
+     */
     public AddCommand(Receiver receiver, String params) {
         this.receiver = receiver;
         this.params = params;
@@ -22,7 +35,6 @@ public class AddCommand implements Command {
      * 2. applies TitleCase to firstName and lastName
      * 3. calls isValidEmail to verify <data3> with regex
      * 4. if no failure, initialize employee.Employee object and add it arrayList
-     *
      *
      * @return boolean true if success, false if any failure encountered
      */
@@ -49,6 +61,10 @@ public class AddCommand implements Command {
         return true;
     }
 
+    /**
+     * Overridden undo method to undo an add command
+     * calls receiver.update with the saved data of overridden employee
+     */
     @Override
     public void undo() {
         receiver.getEmployees().remove(addedEmployee); // remove the employee.Employee object using the List .remove method
