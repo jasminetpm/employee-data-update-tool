@@ -19,6 +19,7 @@ public class Invoker {
 
     /**
      * Sets command array for execution
+     *
      * @param commands array of Command objects for execution
      */
     public void setCommandsForExecution(Command[] commands) {
@@ -29,6 +30,7 @@ public class Invoker {
      * Executes commands in the cmdToExecute array.
      * Each command calls execute and pushes to history for add/update/delete
      * if they are successful, catching CommandExceptions if errors are encountered
+     *
      * @param history Stack to track successfully executed commands
      */
     public void executeCommand(Stack<Command> history) {
