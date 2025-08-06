@@ -11,11 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * receiver.Receiver is the data store that holds the actual employee records (in an ArrayList) and implements the logic
+ * receiver.Receiver is the data store that holds employee records (in an ArrayList)
+ * in the command system. It provides methods for add, update, delete, list,
+ * invoked by Commands.
  */
 public class Receiver {
+    /**
+     * Internal list storing all Employee records
+     */
     private List<Employee> employees;
 
+    /**
+     * Constructs new Receiver instance
+     * It initializes employees through initializeEmployees();
+     * Loading from dataStore.txt if available, else creates empty arraylist
+     */
     public Receiver() {
         // check files if dataStore.txt exists
         // if yes, load employees from there
@@ -24,10 +34,11 @@ public class Receiver {
     }
 
     /**
-     *  initializeEmployees checks if dataStore.txt exists
-     *  if it doesn't, it creates empty employees ArrayList and returns
-     *  if it does, it loads data into employees ArrayList and returns
-     * @return returns empty ArrayList<employee.Employee> or with contents from dataStore if applicable
+     * initializeEmployees checks if dataStore.txt exists
+     * if it doesn't, it creates empty employees ArrayList and returns
+     * if it does, it loads data into employees ArrayList and returns
+     *
+     * @return returns empty arraylist or with contents from dataStore if applicable
      */
     public static ArrayList<Employee> initializeEmployees() {
         // initialize empty employees ArrayList
@@ -75,8 +86,9 @@ public class Receiver {
 
     /**
      * update method taking index and employee object
-     * and updates (sets) the employee arraylist
-     * @param index index of employee to update
+     * and updates (sets) the employee arraylist at given index
+     *
+     * @param index           index of employee to update
      * @param updatedEmployee employee object we will use for overwriting
      */
     public void update(int index, Employee updatedEmployee) {
@@ -85,15 +97,18 @@ public class Receiver {
 
 
     /**
-     * List .remove method removes the element at the specified index
-     * * and shifts any subsequent elements to the left (decreases their index by one).
+     * removes the element at the specified index
+     * and shifts any subsequent elements to the left (decreases their index by one).
      *
-     * @param index
+     * @param index the index of employee to be removed
      */
     public void delete(int index) {
         employees.remove(index);
     }
 
+    /**
+     * Prints list of employees to console with numbering prefixed
+     */
     public void list() {
         for (int i = 0; i < employees.size(); i++) {
             //format the list number, ensuring it has at least two digits, and pad with leading zeros if it has fewer than two digits"
@@ -101,13 +116,21 @@ public class Receiver {
         }
     }
 
+
+    /**
+     * returns employee list
+     *
+     * @return list of employees
+     */
     public List<Employee> getEmployees() {
         return employees;
     }
 
     /**
-     * storeToFile() takes in employees ArrayList and overwrites the
-     * dataStore.txt at the end of client.Client.java's execution
+     * storeToFile() writes instance variable employees to dataStore.txt
+     * if dataStore.txt exists, it is overwritten.
+     * if it does not exist, it is created and written to.
+     * this method is called at the end of Client.java's execution
      */
     public void storeToFile() {
         Path filePath = Paths.get("src/dataStore.txt");
