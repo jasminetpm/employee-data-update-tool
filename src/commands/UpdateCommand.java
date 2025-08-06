@@ -77,9 +77,7 @@ public class UpdateCommand implements Command {
         String email = updatedEmployee.getEmail();
         // Update fields based on how many parts are present and add titlecase
         // update only firstName
-        if (parts.length >= 2) {
-            firstName = Helper.toTitleCase(parts[1]);
-        }
+        firstName = Helper.toTitleCase(parts[1]);
         // update firstName + lastName
         if (parts.length >= 3) {
             lastName = Helper.toTitleCase(parts[2]);
