@@ -43,14 +43,6 @@ public class Employee {
     }
 
     /**
-     * Returns employee's first name
-     * @return employee's first name
-     */
-    public String getFirstName() {
-        return firstName;
-    }
-
-    /**
      * Returns employee's last name
      * @return employee's last name
      */
