@@ -5,36 +5,50 @@ import receiver.Receiver;
 
 import java.util.List;
 
-import static java.lang.Character.toTitleCase;
-
 public class UpdateCommand implements Command {
-    //params
+    /**
+     * command payload received from client
+     */
     private String params;
+    /**
+     * index of the employee we wish to update
+     */
     private int index;
+    /**
+     * employee object of the employee we wish to update
+     */
     private Employee updatedEmployee;
-
-    //receiver
+    /**
+     * receiver object passed into the constructor from the client
+     */
     private Receiver receiver;
 
+    /**
+     * public constructor for the class UpdateCommand
+     *
+     * @param receiver object to link to receiver class
+     * @param params   payload in format <index> <data1> <data2?> <data3?>
+     */
     public UpdateCommand(Receiver receiver, String params) {
         this.receiver = receiver;
         this.params = params;
     }
 
-
     /**
-     * execute parses payloads for index & data1/2/3
+     * method execute parses payloads for index and data1-3
      * verifies payload format
      * checks index if employee exists
      * calls receiver.update(index, updatedEmployee); to update the employee
+     *
      * @return boolean true/false based on update success
      */
     @Override
     public boolean execute() {
-        String[] parts = params.split(" ");
-
+        // retrieve our arraylist of employees
         List<Employee> employees = receiver.getEmployees();
 
+        // verify payload has valid number of parts
+        String[] parts = params.split(" ");
         if (parts.length < 2 || parts.length > 4) {
             System.out.println("Invalid payload format. Expected: <index> <data1> <data2> <data3>");
             return false;
@@ -46,29 +60,26 @@ public class UpdateCommand implements Command {
             System.out.println("Invalid index format.");
             return false;
         }
-
         // check index exists within our employees list
         if (index < 0 || index >= employees.size()) {
             System.out.println("Index out of bounds.");
             return false;
         }
-
-        // retrieve the employee object stored at that index
+        // retrieve and store the employee object stored at that index
         this.updatedEmployee = employees.get(index);
         String firstName = updatedEmployee.getFirstName();
         String lastName = updatedEmployee.getLastName();
         String email = updatedEmployee.getEmail();
-
-        // Update fields based on how many parts are present
+        // Update fields based on how many parts are present and add titlecase
         // update only firstName
         if (parts.length >= 2) {
             firstName = Helper.toTitleCase(parts[1]);
         }
-        // update firstName + secondName
+        // update firstName + lastName
         if (parts.length >= 3) {
             lastName = Helper.toTitleCase(parts[2]);
         }
-        // update all 3 data fields
+        // update all firstName + lastName + email data fields
         if (parts.length == 4) {
             String data3 = parts[3];
             if (!Helper.isValidEmail(data3)) {
@@ -82,6 +93,10 @@ public class UpdateCommand implements Command {
         return true;
     }
 
+    /**
+     * Overridden undo method to undo and update command
+     * calls receiver.update with the saved data of overridden employee
+     */
     @Override
     public void undo() {
         receiver.update(index, updatedEmployee);
