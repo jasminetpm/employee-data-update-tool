@@ -6,56 +6,48 @@ import receiver.Receiver;
 
 import java.util.Stack;
 
+/**
+ * Client class is the entry for our command-based application
+ * It creates stack to maintain command history, instantiates receiver
+ * to handle business logic, invoker manages command executions.
+ * Commands are instantiated and added to a Command[] array,
+ * invoker sets this array and executes it
+ */
 public class Client {
+    /**
+     * Main initializes command system and executes some commands
+     *
+     * @param args command-line arguments are not used
+     */
     public static void main(String[] args) {
-        // history
+        // history stack for successfully executed commands
         Stack<Command> history = new Stack<>();
-
-        // Create receiver.Receiver
+        // Create receiver for business logic
         Receiver receiver = new Receiver();
-
-        // Create invoker.Invoker
+        // Create invoker for command execution
         Invoker invoker = new Invoker();
 
-
-        // Test 1
-        Command command1 = new AddCommand(receiver, "Jane Doe hello@gmail.com");
-//        commands.Command command2 = new commands.AddCommand(receiver, "Hanna Moon tetter.tots@potatoesarelife.com");
-//        commands.Command command3 = new commands.AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-//        commands.Command command4 = new commands.AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-//        commands.Command command5 = new commands.AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-//        commands.Command command6 = new commands.AddCommand(receiver, "JINGHAN wu jinghan.wu@dbs.com");
-
+        // Construct commands
         Command undoCommand = new UndoCommand(receiver, history);
         Command listCommand = new ListCommand(receiver);
-        Command deleteCommand = new DeleteCommand(receiver,"1");
+        Command deleteCommand = new DeleteCommand(receiver, "1");
 
-
-//        commands.Command updateCommand = new commands.UpdateCommand(receiver,"c JANE DOE email109");
-        Command updateCommand = new UpdateCommand(receiver,"1 JENNY");
-//        commands.Command deleteCommand2 = new commands.DeleteCommand(receiver,"3");
-
-//        commands.Command[] cmdToExecute = new commands.Command[] {command1, command2, command3,deleteCommand,listCommand,updateCommand,undoCommand,deleteCommand2,listCommand};
-//        commands.Command[] cmdToExecute = new commands.Command[] {command1, listCommand, listCommand, listCommand,undoCommand, listCommand, undoCommand};
-//        commands.Command[] cmdToExecute = new commands.Command[] {command1};//,updateCommand,listCommand};
-        Command[] cmdToExecute = {command1,updateCommand,listCommand};
-
-
-//        commands.Command[] cmdToExecute = new commands.Command[] {command1, command2, command3, updateCommand,listCommand, undoCommand, listCommand };
-//        commands.Command[] cmdToExecute = new commands.Command[] {command1, command2, command3, listCommand, deleteCommand, listCommand, undoCommand, listCommand};
-
-        // Test 3
-//        commands.Command updateCommand = new commands.UpdateCommand(receiver,"4 JANE DOE tots.tetter@gmail.com");
-//        commands.Command[] cmdToExecute = new commands.Command[]{updateCommand};
-
+        // Test Commands
+        Command command1 = new AddCommand(receiver, "Jane Doe email_109");
+        Command command2 = new commands.AddCommand(receiver, "Hanna Moon tetter.tots@potatoesarelife.com");
+        Command command3 = new commands.AddCommand(receiver, "foo bar foo.bar@dbs.com");
+        Command command4 = new commands.AddCommand(receiver, "lorem ipsum lorem-ipsum.LI@db.com");
+        Command command5 = new commands.AddCommand(receiver, "firstname lastname firstname.lastname@digipen.com");
+        Command command6 = new commands.AddCommand(receiver, "firstname lastname firstname.lastname@digipen.com.sg");
+        Command updateCommand1 = new UpdateCommand(receiver, "2 JANE DOE email_109");
+        Command updateCommand2 = new UpdateCommand(receiver, "1 JENNY");
+        Command[] cmdToExecute = {command1, command2, deleteCommand, undoCommand, listCommand};
 
         // executing commands via invoker
         invoker.setCommandsForExecution(cmdToExecute);
         invoker.executeCommand(history);
 
-
         // store updated employee ArrayList into the dataStore.txt at the end of program
 //        receiver.storeToFile();
-
     }
 }
