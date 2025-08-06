@@ -2,6 +2,12 @@ package commands;
 
 import java.util.regex.Pattern;
 
+/**
+ * Helper class provides utility methods for string formatting and regex checks.
+ * It includes:
+ * 1. toTitleCase() for title case conversions for <data> fields
+ * 2. isValidEmail() for regex checks for valid email formats
+ */
 public class Helper {
     /**
      * toTitleCase takes in a String input and formats it into TitleCase
